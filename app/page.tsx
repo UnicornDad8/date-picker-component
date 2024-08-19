@@ -17,24 +17,27 @@ export default function Home() {
   const [date, setDate] = React.useState<Date>(new Date());
 
   return (
-    <main className="flex mt-20 flex-col items-center justify-center">
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            variant={"outline"}
-            className={cn(
-              "w-[286px] bg-white shadow-lg justify-start text-left font-normal",
-              !date && "text-muted-foreground"
-            )}
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? format(date, "PPP HH:mm") : <span>Pick a date</span>}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-4">
-          <DatetimePicker selected={date} setDate={setDate} initialFocus />
-        </PopoverContent>
-      </Popover>
-    </main>
+    <>
+      <main className="flex flex-col items-center justify-center relative">
+        <div className="w-full h-[300px] bg-[#53d4ad] rounded-br-[92px]" />
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant={"outline"}
+              className={cn(
+                "w-[286px] absolute top-[60px] bg-white shadow-lg justify-start text-left font-normal",
+                !date && "text-muted-foreground"
+              )}
+            >
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {date ? format(date, "PPP HH:mm") : <span>Pick a date</span>}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-4">
+            <DatetimePicker selected={date} setDate={setDate} initialFocus />
+          </PopoverContent>
+        </Popover>
+      </main>
+    </>
   );
 }
